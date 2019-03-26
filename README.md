@@ -6,12 +6,12 @@ $ npm install imgzipper --save
 ```
 
 ## 使用 / use
-###按需在文件中引入即可
+**按需在文件中引入即可**
 ```
 import ImgZipper form 'imgzipper'
 ```
 
-###或者直接引用img-zipper.js
+**或者直接引用img-zipper.js**
 ```
 <script src="./lib/imgzipper.js"></script> 
 ```
