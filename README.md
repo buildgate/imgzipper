@@ -1,4 +1,4 @@
-# img-zipper
+# [imgzipper](https://github.com/B1LLGATE/imgzipper)
 
 ## 安装 / install
 ```
