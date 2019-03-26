@@ -5,6 +5,8 @@
 $ npm install imgzipper --save
 ```
 
+[demo](https://b1llgate.github.io/imgzipper/dist/index.html)
+
 ## 使用 / use
 **按需在文件中引入即可**
 ```
