@@ -67,7 +67,7 @@
 				this.test = zipper(myfile, this.callback, {
 					scale: this.scale,
 					quality: this.quality,
-					disableBlob:this.disableBlob
+					disableBlob: this.disableBlob,
 				})
 			},
 			callback(blob, url) {
@@ -78,13 +78,11 @@
 				this.scale = 1;
 				this.quality = .82;
 			},
-			disableBlob(){
+			disableBlob() {
 				alert("The current system does not support 'canvas.toBlob',please try to set the paramter 'disableBlob'")
 			}
 		},
-		mounted() {
-			var self = this;
-		}
+		mounted() {}
 	}
 </script>
 

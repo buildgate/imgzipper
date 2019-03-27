@@ -37,8 +37,14 @@ const ImgZipper = (file, Callback, option) => {
 			let drawer = canvas.getContext("2d");
 			let ow,oh;
 			if(width||height){
-				ow=(width?width:(this.width/this.height*height))*scale;
-				oh=(height?height:(this.height/this.width*width))*scale;
+				if(orientation==8||orientation==6){
+					ow=(height?height:(this.width/this.height*width))*scale;
+					oh=(width?width:(this.height/this.width*height))*scale;
+				}
+				else{
+					ow=(width?width:(this.width/this.height*height))*scale;
+					oh=(height?height:(this.height/this.width*width))*scale;
+				}
 			}
 			else{
 				ow = this.width * scale;
