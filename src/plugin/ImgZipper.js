@@ -30,13 +30,21 @@ const ImgZipper = (file, Callback, option) => {
 		return orientation;
 	}
 	
-	const compress = (img, scale, quality, type, callback, disableBlob, orientation) => {
+	const compress = (img, scale, quality, type, callback, disableBlob, orientation, width, height) => {
 		let imgcar = new Image();
 		imgcar.onload = function() {
 			let canvas = document.createElement('canvas');
 			let drawer = canvas.getContext("2d");
-			let ow = this.width * scale;
-			let oh = this.height * scale;
+			let ow,oh;
+			if(width||height){
+				ow=(width?width:(this.width/this.height*height))*scale;
+				oh=(height?height:(this.height/this.width*width))*scale;
+			}
+			else{
+				ow = this.width * scale;
+				oh = this.height * scale;
+			}
+			 
 			let canvasoption = [];
 			canvasoption[6] = {
 				width: oh,
@@ -79,11 +87,13 @@ const ImgZipper = (file, Callback, option) => {
 	}
 	
 	if (file) {
-		const Scale = (option && option.scale) ? parseFloat(option.scale) : .9;
+		const Scale = (option && option.scale) ? parseFloat(option.scale) : 1;
 		const Quality = (option && option.quality) ? parseFloat(option.quality) : .82;
 		const DisableBlob = (option && option.disableBlob) ? option.disableBlob : null;
 		const Type = (option && option.type) ? option.type : 'image/jpeg';
 		const Exif = (option && option.exif==false) ? false : true;
+		const Width = (option && option.width) ? option.width : false;
+		const Height = (option && option.height) ? option.height : false;
 		const reader = new FileReader(),
 			exifreader = new FileReader();
 		if (Exif) {
@@ -92,13 +102,13 @@ const ImgZipper = (file, Callback, option) => {
 				const Orientation = getOrientation(E.target.result)
 				reader.readAsDataURL(file);
 				reader.onload = (e) => {
-					compress(e.target.result, Scale, Quality, Type, Callback, DisableBlob, Orientation)
+					compress(e.target.result, Scale, Quality, Type, Callback, DisableBlob, Orientation,Width,Height)
 				}
 			}
 		} else {
 			reader.readAsDataURL(file);
 			reader.onload = (e) => {
-				compress(e.target.result, Scale, Quality, Type, Callback, DisableBlob)
+				compress(e.target.result, Scale, Quality, Type, Callback, DisableBlob,false,Width,Height)
 			}
 		}
 	}

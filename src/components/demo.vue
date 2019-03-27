@@ -57,7 +57,7 @@
 				file: '',
 				mysrc: '',
 				url: '',
-				scale: 0.9,
+				scale: 1.0,
 				quality: 0.82
 			}
 		},
@@ -66,7 +66,8 @@
 				var myfile = document.querySelector('#input').files[0];
 				this.test = zipper(myfile, this.callback, {
 					scale: this.scale,
-					quality: this.quality
+					quality: this.quality,
+					disableBlob:this.disableBlob
 				})
 			},
 			callback(blob, url) {
@@ -74,8 +75,11 @@
 				this.mysrc = url
 			},
 			reset() {
-				this.scale = .9;
+				this.scale = 1;
 				this.quality = .82;
+			},
+			disableBlob(){
+				alert("The current system does not support 'canvas.toBlob',please try to set the paramter 'disableBlob'")
 			}
 		},
 		mounted() {
@@ -87,7 +91,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 	.main {
-		height: 100%;
+		height: auto;
 		width: 100%;
 		display: flex;
 		flex-direction: column;
