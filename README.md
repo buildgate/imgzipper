@@ -38,7 +38,7 @@ ImgZipper( file, //原始图像文件
   - **默认值** : 无 
   - **注释** : 当file输入为空是函数不执行，file只能是单文件且类型为 imgae/*
 
-- **callback (必填/required)**更新update！
+- **callback (必填/required)** 更新update！
   - **类型** : Function(blob,url,callbackParameter){...}
   - **默认值** : 无
   - **注释** : 本插件采用异步生成图片的方式，函数成功压缩图片后会对callback函数进行调用，并且输入blob（压缩后的图片blob文件类型）,url（压缩后的图片base64文件类型）和 callbackParameter（详见参数说明）
