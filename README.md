@@ -21,15 +21,15 @@ import ImgZipper form 'imgzipper'
 ### 插件使用
 ```
 ImgZipper( file, //原始图像文件
-						callback, //压缩成功回调函数 
-					{ scale: 0.9, //生成图像缩放大小
-						quality: 0.82, //生成图像的质量
-            disableBlob: null, //canvas.toBlob方法失败后调用函数
-            type: 'image/jpeg', //生成图像格式
-            exif: true, // 是否使用调整相机旋转
-						width: xxx, //生成图像的宽度
-						height: xxx, //生成图像的高度
-		})
+	callback, //压缩成功回调函数 
+	{ scale: 0.9, //生成图像缩放大小
+	quality: 0.82, //生成图像的质量
+        disableBlob: null, //canvas.toBlob方法失败后调用函数
+        type: 'image/jpeg', //生成图像格式
+        exif: true, // 是否使用调整相机旋转
+	width: xxx, //生成图像的宽度
+	height: xxx, //生成图像的高度
+	})
 ```
 
 ## 参数 / parameter
