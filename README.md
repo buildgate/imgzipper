@@ -56,7 +56,7 @@ ImgZipper( file, //原始图像文件
 - **disableBlob (选填/optional)**
   - **类型** : Function(canvas){...}
   - **默认值** : 无
-  - **注释** : 由于部分低版本的浏览器不兼容canvas.toBlob()方法，当canvas.toBlob()调用失败时会调用callback函数，输入参数为canvas（压缩图像的canvas类型），用户可以视乎情况设置该函数
+  - **注释** : 由于部分低版本的浏览器不兼容canvas.toBlob()方法，当canvas.toBlob()调用失败时会调用callback函数，输入参数为canvas（压缩图像的canvas类型），用户可以视乎情况设置该函数；亲测edge和ios11以下的需要设置此项
 
 - **type (选填/optional)**
   - **类型** : String
