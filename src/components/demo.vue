@@ -66,8 +66,7 @@
 				var myfile = document.querySelector('#input').files[0];
 				this.test = zipper(myfile, this.callback, {
 					scale: this.scale,
-					quality: this.quality,
-					disableBlob: this.disableBlob,
+					quality: this.quality
 				})
 			},
 			callback(blob, url) {
