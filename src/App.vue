@@ -1,38 +1,29 @@
 <template>
   <div id="app">
-    <demo msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
   </div>
 </template>
 
-<script>
-import demo from './components/demo.vue'
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import demo from './components/demo.vue';
 
-export default {
-  name: 'app',
+@Component({
   components: {
-    demo
-  }
-}
+    demo,
+  },
+})
+export default class App extends Vue {}
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  height: 100%;
-	width: 100%;
-}
-html,body{
-	background: #F2F6FC;
-	height: 100%;
-	width: 100%;
-	
-}
-*{
-	padding: 0;
-	margin: 0;
+  margin-top: 60px;
 }
 </style>

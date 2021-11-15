@@ -45,44 +45,48 @@
 	</div>
 </template>
 
-<script>
-	import zipper from '../plugin/ImgZipper.js'
-	export default {
-		name: 'demo',
-		props: {
-			msg: String
-		},
-		data() {
-			return {
-				file: '',
-				mysrc: '',
-				url: '',
-				scale: 1.0,
-				quality: 0.82
-			}
-		},
-		methods: {
-			change(e) {
-				var myfile = document.querySelector('#input').files[0];
-				this.test = zipper(myfile, this.callback, {
-					scale: this.scale,
-					quality: this.quality
-				})
-			},
-			callback(blob, url) {
-				console.log(blob)
-				this.mysrc = url
-			},
-			reset() {
-				this.scale = 1;
-				this.quality = .82;
-			},
-			disableBlob() {
-				alert("The current system does not support 'canvas.toBlob',please try to set the paramter 'disableBlob'")
-			}
-		},
-		mounted() {}
+<script lang='ts'>
+import zipper from '../plugin/zipper'
+import { Component, Vue} from 'vue-property-decorator';
+
+interface param{
+
+}
+interface inputFile extends Element{
+	files:Array<any>
+}
+
+@Component
+export default class demo extends Vue {
+	file:File|null =null
+	mysrc:string=''
+	url:string=''
+	scale:number=1.0
+	quality:number=0.82
+
+	change() {
+		var myfile = (document.querySelector('#input') as inputFile).files[0];
+		let p={
+			file:myfile,
+			callback:this.callback,
+			scale:this.scale,
+			quality:this.quality
+		}
+		zipper(p)
 	}
+	callback(blob:Blob, url:string) {
+		console.log(blob)
+		this.mysrc = url
+	}
+	reset() {
+		this.scale = 1;
+		this.quality = .82;
+	}
+	disableBlob() {
+		alert("The current system does not support 'canvas.toBlob',please try to set the paramter 'disableBlob'")
+	}
+	
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
